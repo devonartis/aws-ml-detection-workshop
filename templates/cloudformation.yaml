@@ -1,0 +1,117 @@
+---
+AWSTemplateFormatVersion: 2010-09-09
+Description: "AWS re:Invent 2018 - SEC 405 workshop exercise template"
+  
+Resources:
+    
+  # Role used by the ingest Lambda functions
+  LambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      Policies:
+      - PolicyName: LambdaPolicy
+        PolicyDocument:
+          Version: 2012-10-17
+          Statement:
+          - Effect: Allow
+            Action:
+            - cloudwatch:PutMetricData
+            Resource: '*'
+          - Effect: Allow
+            Action:
+            - logs:CreateLogGroup
+            - logs:CreateLogStream
+            - logs:PutLogEvents
+            Resource: '*'
+          - Effect: Allow
+            Action:
+            - s3:GetObject
+            - s3:ListBucket
+            - s3:PutObject
+            Resource: '*'
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+        - Effect: Allow
+          Principal: { Service: lambda.amazonaws.com }
+          Action:
+          - sts:AssumeRole
+       
+  # S3 bucket where <principal ID, IP address> tuples should be written
+  TuplesBucket:
+      Type: AWS::S3::Bucket
+      DeletionPolicy: Delete
+  
+  # Policy granting access to the tuples S3 bucket
+  TuplesBucketPolicy: 
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref TuplesBucket
+      PolicyDocument: 
+        Version: 2012-10-17
+        Statement: 
+        - Sid: AllowLambdaAccess
+          Effect: Allow
+          Principal:
+            AWS: !GetAtt LambdaRole.Arn
+          Action: s3:*
+          Resource:
+          - !GetAtt TuplesBucket.Arn
+          - !Join [ '/', [!GetAtt TuplesBucket.Arn, '*']]
+ 
+  # Lambda function to ingest CloudTrail logs
+  CloudTrailIngestLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket: aws-reinvent2018-sec405-de42b9ca
+        S3Key: aws_lambda/cloudtrail_ingest.zip
+      Environment:
+        Variables:
+          INPUT_BUCKET: aws-reinvent2018-sec405-de42b9ca
+          INPUT_PREFIX: cloudtrail
+          OUTPUT_BUCKET: !Ref TuplesBucket
+          OUTPUT_KEY: train/cloudtrail_tuples.csv
+      Handler: cloudtrail_ingest.handler
+      MemorySize: 1024
+      Role: !GetAtt LambdaRole.Arn
+      Runtime: python3.6
+      Timeout: 60
+   
+  # Permission for S3 to invoke the CloudTrail ingest Lambda
+  CloudTrailIngestLambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      Principal: s3.amazonaws.com
+      FunctionName: !Ref CloudTrailIngestLambda
+      SourceAccount: !Sub ${AWS::AccountId}
+
+  # Lambda function to ingest GuardDuty findings
+  GuardDutyIngestLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      Code:
+        S3Bucket: aws-reinvent2018-sec405-de42b9ca
+        S3Key: aws_lambda/guardduty_ingest.zip
+      Environment:
+        Variables:
+          INPUT_BUCKET: aws-reinvent2018-sec405-de42b9ca
+          INPUT_PREFIX: guardduty
+          OUTPUT_BUCKET: !Ref TuplesBucket
+          OUTPUT_KEY:  infer/guardduty_tuples.csv
+      Handler: guardduty_ingest.handler
+      MemorySize: 1024
+      Role: !GetAtt LambdaRole.Arn
+      Runtime: python3.6
+      Timeout: 60
+
+  # Permission for CloudWatch Events to invoke the GuardDuty ingest Lambda
+  GuardDutyIngestLambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      Principal: events.amazonaws.com
+      FunctionName: !Ref GuardDutyIngestLambda
+      SourceAccount: !Sub ${AWS::AccountId}
+...
