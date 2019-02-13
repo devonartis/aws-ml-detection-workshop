@@ -787,7 +787,8 @@
 <p>If you would like to experiment with the IP Insights algorithm using a much larger dataset, you can choose the <strong>SageMaker Examples</strong> tab in Jupyter to see a list of all the Amazon SageMaker examples. Expand the <strong>Introduction to Amazon Algorithms</strong> section, look for a notebook called <strong>ipinsights-tutorial.ipynb</strong>, then click its <strong>Use</strong> button and <strong>Create copy</strong> in the dialog to create a copy of it, then work through it step by step.</p>
 <h2 id="cleaning-up">Cleaning up</h2>
 <p>In order to prevent charges to your account from the resources created during this workshop, we recommend cleaning up the infrastructure that was created by deleting the CloudFormation stack. You can leave things running though if you want to do more with the workshop; the following cleanup steps can be performed at any time.</p>
-<p>We've created a Bash script to delete the CloudFormation stack, which will remove the Lambda functions, IAM role, and S3 bucket. We use a script because the S3 bucket has The script, <code>cleanup.sh</code>, is provided in this repository. Download it and then run as follows:</p>
+<p>We've created a Bash script to delete the CloudFormation stack, which will remove the Lambda functions, IAM role, and S3 bucket. We use a script because the S3 bucket has The script, <code>cleanup.sh</code>, is provided in this repository.</p>
+<p><a href="https://github.com/aws-samples/aws-ml-detection-workshop">Click here</a> to go to the repository, then download the script <code>cleanup.sh</code> and run it as follows:</p>
 <div class="codehilite"><pre><span></span>chmod +x cleanup.sh
 ./cleanup.sh
 </pre></div>
