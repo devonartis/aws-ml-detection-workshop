@@ -159,7 +159,9 @@ If you would like to experiment with the IP Insights algorithm using a much larg
 
 In order to prevent charges to your account from the resources created during this workshop, we recommend cleaning up the infrastructure that was created by deleting the CloudFormation stack. You can leave things running though if you want to do more with the workshop; the following cleanup steps can be performed at any time.
 
-We've created a Bash script to delete the CloudFormation stack, which will remove the Lambda functions, IAM role, and S3 bucket. We use a script because the S3 bucket has The script, `cleanup.sh`, is provided in this repository. Download it and then run as follows:
+We've created a Bash script to delete the CloudFormation stack, which will remove the Lambda functions, IAM role, and S3 bucket. We use a script because the S3 bucket has The script, `cleanup.sh`, is provided in this repository.
+
+[Click here](https://github.com/aws-samples/aws-ml-detection-workshop) to go to the repository, then download the script `cleanup.sh` and run it as follows:
 
 ```
 chmod +x cleanup.sh
