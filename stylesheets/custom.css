@@ -38,17 +38,11 @@
 
 /* Language Drop Down */
 .md-header-nav__lang {
-    padding: 0 0.5rem;
-    line-height: 4.8rem;
+    padding: 10px 40px 0 10px;
+    display: inline-block;
     font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif;
     width: 30px;
-}
-
-.md-lang-drop {
-    position: relative;
-    display: inline-block;
-    font-size: 1.9rem;
-    padding: 0 0 0 5px;
+    font-size: x-large;
 }
 
 .md-lang-dropbtn {
