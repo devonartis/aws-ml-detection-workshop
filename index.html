@@ -678,29 +678,37 @@
 <h2 id="whats-in-here">What's in here?</h2>
 <p>This repository contains the following files that will be used for this workshop:</p>
 <ul>
-<li>aws_lambda/</li>
+<li>aws_lambda/<ul>
 <li>cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest</li>
 <li>guardduty_ingest.zip - Lambda zip bundle for workshop GuardDuty finding ingest</li>
+</ul>
+</li>
 <li>cleanup.sh - Shell script to delete the workshop CloudFormation stack at the end</li>
 <li>workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker</li>
-<li>templates/</li>
+<li>templates/<ul>
 <li>cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop</li>
+</ul>
+</li>
 </ul>
 <h2 id="initial-setup">Initial setup</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <p>Before getting started, you will need the following:</p>
 <ul>
-<li>AWS account</li>
+<li>AWS account<ul>
 <li><strong>Please note</strong> if your AWS account is brand new (&lt;24 hours old), you might encounter errors during the workshop when creating some resources.</li>
+</ul>
+</li>
 <li>Modern, graphical web browser - sorry Lynx users :)</li>
 <li>IAM user with administrator access to the account</li>
 </ul>
 <h3 id="deploying-the-cloudformation-template">Deploying the CloudFormation template</h3>
 <p>The CloudFormation template creates the following:</p>
 <ul>
-<li>2 Lambda functions</li>
+<li>2 Lambda functions<ul>
 <li>CloudTrail log file ingester</li>
 <li>GuardDuty finding ingester</li>
+</ul>
+</li>
 <li>IAM role used by the Lambda functions</li>
 <li>S3 bucket used for outputting (principal ID, IP address) tuples</li>
 </ul>
@@ -803,15 +811,21 @@
 </ol>
 <p>You will also need to turn off or remove the following resources. If you wish to retain the resources in your account but not incur charges, you may stop or suspend; otherwise you should disable or delete them.</p>
 <ul>
-<li>GuardDuty (<a href="https://aws.amazon.com/guardduty/pricing/">pricing info</a>)</li>
+<li>GuardDuty (<a href="https://aws.amazon.com/guardduty/pricing/">pricing info</a>)<ul>
 <li>Go to the GuardDuty console, go to <strong>Settings</strong>, then scroll down and choose either <strong>Suspend GuardDuty</strong> or <strong>Disable GuardDuty</strong>.</li>
-<li>SageMaker (<a href="https://aws.amazon.com/sagemaker/pricing/">pricing info</a>)</li>
+</ul>
+</li>
+<li>SageMaker (<a href="https://aws.amazon.com/sagemaker/pricing/">pricing info</a>)<ul>
 <li>Notebook - On the <strong>Notebook instances</strong> page in the SageMaker console, click the circle to select the "AWS-SecML-Detection" notebook then under <strong>Actions</strong> choose <strong>Stop</strong>. Once the notebook is stopped, under <strong>Actions</strong> choose <strong>Delete</strong>. If you'd rather keep the notebook around to work with again, then just <strong>Stop</strong> is enough.</li>
 <li>Endpoint - On the <strong>Endpoints</strong> page in the SageMaker console, click the circle to select the endpoint for the workshop (the endpoint with the name stored in the variable <code>endpoint_name</code> from the notebook), then under <strong>Actions</strong> choose <strong>Delete</strong>.</li>
-<li>CloudWatch (<a href="https://aws.amazon.com/cloudwatch/pricing/">pricing info</a>)</li>
+</ul>
+</li>
+<li>CloudWatch (<a href="https://aws.amazon.com/cloudwatch/pricing/">pricing info</a>)<ul>
 <li>Logs - The following CloudWatch log groups will have been created for the AWS Lambda functions that you can delete by selecting them and then under <strong>Actions</strong> choosing <strong>Delete log group</strong>.<ul>
 <li>"AWS-SecML-Detection-CloudTrailIngestLambda"</li>
 <li>"AWS-SecML-Detection-GuardDutyIngestLambda"</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
