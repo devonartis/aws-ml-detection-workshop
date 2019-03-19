@@ -1,6 +1,8 @@
 # Scalable, Automated Anomaly Detection with Amazon GuardDuty and SageMaker
 
-In this README you will find instructions and pointers to the resources used for the workshop. This workshop contains the following exercises:
+Welcome! This guide provides instructions and pointers to the resources used for the workshop.
+
+This workshop contains the following exercises:
 
 1. Examining GuardDuty findings
 2. IP-based anomaly detection in SageMaker
@@ -15,15 +17,15 @@ After the setup steps below, there are instructions provided for all of the hand
 
 ## What's in here?
 
-This repository contains the following files that will be used for this workshop:
+The [repository](https://github.com/aws-samples/aws-ml-detection-workshop/) contains the following files that will be used for this workshop:
 
 - aws_lambda/
     - cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest
     - guardduty_ingest.zip - Lambda zip bundle for workshop GuardDuty finding ingest
-- cleanup.sh - Shell script to delete the workshop CloudFormation stack at the end
-- workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
 - templates/
     - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
+- cleanup.sh - Shell script to delete the workshop CloudFormation stack at the end
+- workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
 
 ## Initial setup
 
