@@ -715,7 +715,7 @@
 </ul>
 <p>First, log in to your AWS account using the IAM user with administrator access.</p>
 <p>To easily deploy the CloudFormation stack, please browse to the following stack launch URL:</p>
-<p>https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AWS-SecML-Detection&amp;templateURL=https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/cloudformation.yaml</p>
+<p><a href="https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AWS-SecML-Detection&amp;templateURL=https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/cloudformation.yaml">https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AWS-SecML-Detection&amp;templateURL=https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/cloudformation.yaml</a></p>
 <p>The stack launch URL uses a copy of the CloudFormation template from <em>templates/cloudformation.yaml</em> that is contained in an S3 bucket and is the same as the one in this code repository. It creates a CloudFormation stack in the US West (Oregon) region also known as us-west-2, with the name "AWS-SecML-Detection".</p>
 <ol>
 <li>On the <strong>Select Template</strong> page, note that the template location where it says "Specify an Amazon S3 template URL" is pre-populated with the S3 URL to the template. Click <strong>Next</strong>.</li>
@@ -783,16 +783,16 @@
 <li>For IAM role, choose "Create a new role" in the dropdown. On the next dialog, ensure "S3 buckets you specify" is selected, in the text field for "Specific S3 buckets" paste the name of the S3 bucket from step 1, and click <strong>Create role</strong>.</li>
 <li>All other notebook options can be left at defaults. Click <strong>Create notebook instance</strong>.</li>
 <li>Once the notebook is running, click <strong>Open Jupyter</strong> to open the notebook.</li>
-<li>Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb</li>
+<li>Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <a href="https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb">https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb</a></li>
 <li>Once you download the notebook file, click the <strong>Upload</strong> button on the upper right hand side in Jupyter to upload it to your running notebook instance.</li>
 </ol>
 <h3 id="24-training-and-scoring-with-the-ip-insights-algorithm">2.4 Training and scoring with the IP Insights algorithm</h3>
 <p>Click on the notebook and work through it step by step to learn how to train the model using the tuples from the CloudTrail logs and then make inferences by scoring the tuples from the GuardDuty findings. We recommend using the "Run" command to walk through each code block one by one rather than doing "Run All".</p>
 <p>IP Insights is an unsupervised learning algorithm for detecting anomalous behavior and usage patterns of IP addresses, that helps users identifying fraudulent behavior using IP addresses, describe the Amazon SageMaker IP Insights algorithm, demonstrate how you can use it in a real-world application, and share some of our results using it internally.</p>
 <p>For more information about the IP Insights algorithm, please read the following AWS blog post:</p>
-<p>https://aws.amazon.com/blogs/machine-learning/detect-suspicious-ip-addresses-with-the-amazon-sagemaker-ip-insights-algorithm/</p>
+<p><a href="https://aws.amazon.com/blogs/machine-learning/detect-suspicious-ip-addresses-with-the-amazon-sagemaker-ip-insights-algorithm/">https://aws.amazon.com/blogs/machine-learning/detect-suspicious-ip-addresses-with-the-amazon-sagemaker-ip-insights-algorithm/</a></p>
 <p>You can also view the IP Insights documentation here:</p>
-<p>https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html</p>
+<p><a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html">https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html</a></p>
 <p><strong>2.4.1 (BONUS) IP Insights algorithm tutorial</strong></p>
 <p>If you would like to experiment with the IP Insights algorithm using a much larger dataset, you can choose the <strong>SageMaker Examples</strong> tab in Jupyter to see a list of all the Amazon SageMaker examples. Expand the <strong>Introduction to Amazon Algorithms</strong> section, look for a notebook called <strong>ipinsights-tutorial.ipynb</strong>, then click its <strong>Use</strong> button and <strong>Create copy</strong> in the dialog to create a copy of it, then work through it step by step.</p>
 <h2 id="cleaning-up">Cleaning up</h2>
