@@ -52,7 +52,7 @@ First, log in to your AWS account using the IAM user with administrator access.
 
 To easily deploy the CloudFormation stack, please browse to the following stack launch URL:
 
-https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AWS-SecML-Detection&templateURL=https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/cloudformation.yaml
+<https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AWS-SecML-Detection&templateURL=https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/cloudformation.yaml>
 
 The stack launch URL uses a copy of the CloudFormation template from *templates/cloudformation.yaml* that is contained in an S3 bucket and is the same as the one in this code repository. It creates a CloudFormation stack in the US West (Oregon) region also known as us-west-2, with the name "AWS-SecML-Detection".
 
@@ -136,7 +136,7 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
 5. For IAM role, choose "Create a new role" in the dropdown. On the next dialog, ensure "S3 buckets you specify" is selected, in the text field for "Specific S3 buckets" paste the name of the S3 bucket from step 1, and click **Create role**.
 6. All other notebook options can be left at defaults. Click **Create notebook instance**.
 7. Once the notebook is running, click **Open Jupyter** to open the notebook.
-8. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb
+8. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb>
 9. Once you download the notebook file, click the **Upload** button on the upper right hand side in Jupyter to upload it to your running notebook instance.
 
 ### 2.4 Training and scoring with the IP Insights algorithm
@@ -147,11 +147,11 @@ IP Insights is an unsupervised learning algorithm for detecting anomalous behavi
 
 For more information about the IP Insights algorithm, please read the following AWS blog post:
 
-https://aws.amazon.com/blogs/machine-learning/detect-suspicious-ip-addresses-with-the-amazon-sagemaker-ip-insights-algorithm/
+<https://aws.amazon.com/blogs/machine-learning/detect-suspicious-ip-addresses-with-the-amazon-sagemaker-ip-insights-algorithm/>
 
 You can also view the IP Insights documentation here:
 
-https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html
+<https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html>
 
 **2.4.1 (BONUS) IP Insights algorithm tutorial**
 
