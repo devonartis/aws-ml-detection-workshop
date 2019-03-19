@@ -18,12 +18,12 @@ After the setup steps below, there are instructions provided for all of the hand
 This repository contains the following files that will be used for this workshop:
 
 - aws_lambda/
-  - cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest
-  - guardduty_ingest.zip - Lambda zip bundle for workshop GuardDuty finding ingest
+    - cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest
+    - guardduty_ingest.zip - Lambda zip bundle for workshop GuardDuty finding ingest
 - cleanup.sh - Shell script to delete the workshop CloudFormation stack at the end
 - workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
 - templates/
-  - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
+    - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
 
 ## Initial setup
 
@@ -32,7 +32,7 @@ This repository contains the following files that will be used for this workshop
 Before getting started, you will need the following:
 
 - AWS account
-  - **Please note** if your AWS account is brand new (<24 hours old), you might encounter errors during the workshop when creating some resources.
+    - **Please note** if your AWS account is brand new (<24 hours old), you might encounter errors during the workshop when creating some resources.
 - Modern, graphical web browser - sorry Lynx users :)
 - IAM user with administrator access to the account
 
@@ -41,8 +41,8 @@ Before getting started, you will need the following:
 The CloudFormation template creates the following:
 
 - 2 Lambda functions
-  - CloudTrail log file ingester
-  - GuardDuty finding ingester
+    - CloudTrail log file ingester
+    - GuardDuty finding ingester
 - IAM role used by the Lambda functions
 - S3 bucket used for outputting (principal ID, IP address) tuples
 
@@ -178,11 +178,12 @@ If you cannot run the Bash script, you can manually clean-up these resources by 
 You will also need to turn off or remove the following resources. If you wish to retain the resources in your account but not incur charges, you may stop or suspend; otherwise you should disable or delete them.
 
 - GuardDuty ([pricing info](https://aws.amazon.com/guardduty/pricing/))
-  - Go to the GuardDuty console, go to **Settings**, then scroll down and choose either **Suspend GuardDuty** or **Disable GuardDuty**.
+    - Go to the GuardDuty console, go to **Settings**, then scroll down and choose either **Suspend GuardDuty** or **Disable GuardDuty**.
 - SageMaker ([pricing info](https://aws.amazon.com/sagemaker/pricing/))
-  - Notebook - On the **Notebook instances** page in the SageMaker console, click the circle to select the "AWS-SecML-Detection" notebook then under **Actions** choose **Stop**. Once the notebook is stopped, under **Actions** choose **Delete**. If you'd rather keep the notebook around to work with again, then just **Stop** is enough.
-  - Endpoint - On the **Endpoints** page in the SageMaker console, click the circle to select the endpoint for the workshop (the endpoint with the name stored in the variable `endpoint_name` from the notebook), then under **Actions** choose **Delete**.
- - CloudWatch ([pricing info](https://aws.amazon.com/cloudwatch/pricing/))
-   - Logs - The following CloudWatch log groups will have been created for the AWS Lambda functions that you can delete by selecting them and then under **Actions** choosing **Delete log group**.
-     - "AWS-SecML-Detection-CloudTrailIngestLambda"
-     - "AWS-SecML-Detection-GuardDutyIngestLambda"
+    - Notebook - On the **Notebook instances** page in the SageMaker console, click the circle to select the "AWS-SecML-Detection" notebook then under **Actions** choose **Stop**. Once the notebook is stopped, under **Actions** choose **Delete**. If you'd rather keep the notebook around to work with again, then just **Stop** is enough.
+    - Endpoint - On the **Endpoints** page in the SageMaker console, click the circle to select the endpoint for the workshop (the endpoint with the name stored in the variable `endpoint_name` from the notebook), then under **Actions** choose **Delete**.
+- CloudWatch ([pricing info](https://aws.amazon.com/cloudwatch/pricing/))
+    - Logs - The following CloudWatch log groups will have been created for the AWS Lambda functions that you can delete by selecting them and then under **Actions** choosing **Delete log group**.
+        - "AWS-SecML-Detection-CloudTrailIngestLambda"
+        - "AWS-SecML-Detection-GuardDutyIngestLambda"
+
