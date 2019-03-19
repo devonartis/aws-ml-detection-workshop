@@ -1,8 +1,8 @@
 #!/bin/bash
 
 PROFILE=default
-REGION=ca-central-1
-STACK_NAME=SEC405
+REGION=us-west-2
+STACK_NAME=AWS-Workshop-Security-ML-Threat-Detection
 
 while test $# -gt 0; do
   case "$1" in

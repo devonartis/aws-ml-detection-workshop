@@ -1,7 +1,49 @@
 ---
 AWSTemplateFormatVersion: 2010-09-09
-Description: "AWS re:Invent 2018 - SEC 405 workshop exercise template"
+Description: "Scalable, Automated Anomaly Detection with Amazon GuardDuty and SageMaker"
+
+Parameters:
   
+  CloudTrailLogsBucket:
+    Type: String
+    Default: aws-workshop-security-ml-threat-detection
+    Description: S3 bucket from which the input CloudTrail logs should be loaded.
+  
+  CloudTrailLogsPrefix:
+    Type: String
+    Default: cloudtrail
+    Description: Prefix in the bucket from which the input CloudTrail logs should be loaded.
+  
+  GuardDutyFindingsBucket:
+    Type: String
+    Default: aws-workshop-security-ml-threat-detection
+    Description: S3 bucket from which the input GuardDuty findings should be loaded.
+  
+  GuardDutyFindingsPrefix:
+    Type: String
+    Default: guardduty
+    Description: Prefix in the bucket from which the input GuardDuty findings should be loaded.
+  
+  CloudTrailIngestLambdaFunctionBucket:
+    Type: String
+    Default: aws-workshop-security-ml-threat-detection
+    Description: S3 bucket where the zip bundle for the CloudTrail Ingest AWS Lambda function is located.
+    
+  CloudTrailIngestLambdaFunctionKey:
+    Type: String
+    Default: aws_lambda/cloudtrail_ingest.zip
+    Description: Key prefix in the bucket where the zip bundle for the CloudTrail Ingest AWS Lambda function is located.
+
+  GuardDutyIngestLambdaFunctionBucket:
+    Type: String
+    Default: aws-workshop-security-ml-threat-detection
+    Description: S3 bucket where the zip bundle for the GuardDuty Ingest AWS Lambda function is located.
+    
+  GuardDutyIngestLambdaFunctionKey:
+    Type: String
+    Default: aws_lambda/guardduty_ingest.zip
+    Description: Key prefix in the bucket where the zip bundle for the GuardDuty Ingest AWS Lambda function is located.
+    
 Resources:
     
   # Role used by the ingest Lambda functions
@@ -64,12 +106,12 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        S3Bucket: aws-reinvent2018-sec405-de42b9ca
-        S3Key: aws_lambda/cloudtrail_ingest.zip
+        S3Bucket: !Ref CloudTrailIngestLambdaFunctionBucket
+        S3Key: !Ref CloudTrailIngestLambdaFunctionKey
       Environment:
         Variables:
-          INPUT_BUCKET: aws-reinvent2018-sec405-de42b9ca
-          INPUT_PREFIX: cloudtrail
+          INPUT_BUCKET: !Ref CloudTrailLogsBucket
+          INPUT_PREFIX: !Ref CloudTrailLogsPrefix
           OUTPUT_BUCKET: !Ref TuplesBucket
           OUTPUT_KEY: train/cloudtrail_tuples.csv
       Handler: cloudtrail_ingest.handler
@@ -92,12 +134,12 @@ Resources:
     Type: AWS::Lambda::Function
     Properties:
       Code:
-        S3Bucket: aws-reinvent2018-sec405-de42b9ca
-        S3Key: aws_lambda/guardduty_ingest.zip
+        S3Bucket: !Ref GuardDutyIngestLambdaFunctionBucket
+        S3Key: !Ref GuardDutyIngestLambdaFunctionKey
       Environment:
         Variables:
-          INPUT_BUCKET: aws-reinvent2018-sec405-de42b9ca
-          INPUT_PREFIX: guardduty
+          INPUT_BUCKET: !Ref GuardDutyFindingsBucket
+          INPUT_PREFIX: !Ref GuardDutyFindingsPrefix
           OUTPUT_BUCKET: !Ref TuplesBucket
           OUTPUT_KEY:  infer/guardduty_tuples.csv
       Handler: guardduty_ingest.handler
