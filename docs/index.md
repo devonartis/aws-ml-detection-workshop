@@ -119,7 +119,7 @@ To make use of the trained model, we will pass `<principal ID, IP address>` tupl
 An AWS Lambda function has been created to do this, but you'll need to make a small change to the function and then run it to generate the tuples.
 
 1. Browse to the AWS Lambda console and click on the Lambda function whose name starts with "AWS-SecML-Detection-GuardDutyIngestLambda".
-2. A function `get_tuples` has been provided to take GuardDuty findings as input and return `<principal ID, IP address>` tuples for each finding. A call to this function has already been set up in the `handler` function (search for the string "TODO"), but the line is is commented out. Uncomment it.
+2. A function `get_tuples` has been provided to take GuardDuty findings as input and return `<principal ID, IP address>` tuples for each finding. A call to this function has already been set up in the `handler` function (search for the string "TODO"), but the line is commented out. Uncomment it.
 3. Click the **Save** button at the top to save your function changes.
 4. Click the **Test** button to run the function again. This time it write the tuples to the S3 bucket where they can be loaded into the IP Insights algorithm for scoring.
 
