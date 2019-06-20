@@ -2,30 +2,17 @@
 
 Welcome! This guide provides instructions and pointers to the resources used for the workshop.
 
-This workshop contains the following exercises:
-
-1. Enabling Amazon GuardDuty and exploring GuarDuty findings
-2. Using AWS Lambda to transform data so it is suitable for model training and inference
-3. IP-based anomaly detection in SageMaker
-
-After the setup steps below, there are instructions provided for all of the hands-on exercises, instructions of how to delete the CloudFormation stack, and following that a full walkthrough guide on how to complete the exercises.
-
 * **Level**: Intermediate
 * **Duration**: 2 hours
 * **CAF Components**: Detective, Responsive
 * **Prerequisites**: Active email address, Modern, graphical web browser - sorry Lynx users :)
 
-## What's in here?
+This documents helps you get started with the Jam Platform and then walks your through the following exercises:
 
-The [repository](https://github.com/aws-samples/aws-ml-detection-workshop/) contains the following files that will be used for this workshop:
+1. Enabling Amazon GuardDuty and exploring GuarDuty findings
+2. Using AWS Lambda to transform data so it is suitable for model training and inference
+3. IP-based anomaly detection in SageMaker
 
-- aws_lambda/
-    - cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest
-    - guardduty_ingest.zip - Lambda zip bundle for workshop GuardDuty finding ingest
-- templates/
-    - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
-- mlsec-participant-policy.json - The IAM policy specifying the permissions needed for the lab user
-- workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
 
 ## Initial setup
 
@@ -128,9 +115,9 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
         **arn:aws:iam::[ACCTNUMBER]:role/MLSecWorkshopSageMakerRole**
 7. You'll need to paste your account number into this strong before proceeding.  The Jam platform makes this easy...
 8. Go back to the Jam console and on the left-hand side, click the **AWS Account** option
-9. Copy the 12-digit account number in place of the **[ACCTNUMBER]**
-10. Paste that number into the ARN back in the SageMaker notebook console.  Your final string should look something like this  
-    arn:aws:iam::123456789012:role/MLSecWorkshopSageMakerRole
+9. Copy the 12-digit account number
+10. Paste that number into the ARN back in the SageMaker notebook console in place of **[ACCTNUMBER]**.  Your final string should look something like this  
+   arn:aws:iam::123456789012:role/MLSecWorkshopSageMakerRole
 6. All other notebook options can be left at defaults. Click **Create notebook instance**.
 7. Once the notebook is running, click **Open Jupyter** to open the notebook.
 8. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb>
@@ -153,3 +140,15 @@ You can also view the IP Insights documentation here:
 **2.4.1 (BONUS) IP Insights algorithm tutorial**
 
 If you would like to experiment with the IP Insights algorithm using a much larger dataset, you can choose the **SageMaker Examples** tab in Jupyter to see a list of all the Amazon SageMaker examples. Expand the **Introduction to Amazon Algorithms** section, look for a notebook called **ipinsights-tutorial.ipynb**, then click its **Use** button and **Create copy** in the dialog to create a copy of it, then work through it step by step.
+
+##  How can I reuse the artifacts in this lab?
+
+All of the code and artifacts used in this lab - including these instructions, but not including the Jam Platform - are available in a public GitHub [repository](https://github.com/aws-samples/aws-ml-detection-workshop/).  There you will find the following files:
+
+- aws_lambda/
+    - cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest
+    - guardduty_ingest.zip - Lambda zip bundle for workshop GuardDuty finding ingest
+- templates/
+    - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
+- mlsec-participant-policy.json - The IAM policy specifying the permissions needed for the lab user
+- workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
