@@ -120,7 +120,7 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
    arn:aws:iam::123456789012:role/MLSecWorkshopSageMakerRole
 6. All other notebook options can be left at defaults. Click **Create notebook instance**.
 7. Once the notebook is running, click **Open Jupyter** to open the notebook.
-8. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/workshop-ipinsights.ipynb>
+8. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/mlsec-workshop-ipinsights.ipynb>
 9. Once you download the notebook file, click the **Upload** button on the upper right hand side in Jupyter to upload it to your running notebook instance.
 
 ### 3.2 Training and scoring with the IP Insights algorithm
