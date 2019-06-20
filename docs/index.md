@@ -20,7 +20,7 @@ This documents helps you get started with the Jam Platform and then walks your t
 - You do not need an AWS account for this workshop.  You will be using the AWS Jam Platform to access a temporary AWS account to run the lab.
 - Modern, graphical web browser - sorry Lynx users :)
 
-** Before getting started, you will need to setup an account on the AWS Jam Platform. **
+**Before getting started, you will need to setup an account on the AWS Jam Platform.**
 - If you do not already have a Jam account, you will need an active email address to register
 - Go to https://jam.awsevents.com/ and enroll in an account
 - Your Workshop Facilitator will give you the Secret Key necessary to access today's Jam Event
