@@ -5,7 +5,7 @@ Welcome! This guide provides instructions and pointers to the resources used for
 * **Level**: Intermediate
 * **Duration**: 2 hours
 * **CAF Components**: Detective, Responsive
-* **Prerequisites**: Active email address, Modern, graphical web browser - sorry Lynx users :)
+* **Prerequisites**: Active email address, Modern, graphical web browser
 
 This documents helps you get started with the Jam Platform and then walks your through the following exercises:
 
@@ -17,7 +17,8 @@ This documents helps you get started with the Jam Platform and then walks your t
 ## Initial setup
 
 ### Prerequisites
-- You do not need an AWS account for this workshop.  You will be using the AWS Jam Platform to access a temporary AWS account to run the lab.
+- You do not need an AWS account for this workshop. You will be using the AWS Jam Platform to access a temporary AWS account to run the lab.
+ - After the workshop, you can deploy the CloudFormation template, located in the GitHub repository, into your own AWS account if you'd like to explore the workshop exercises further!
 - Modern, graphical web browser - sorry Lynx users :)
 
 **Before getting started, you will need to setup an account on the AWS Jam Platform.**
@@ -27,7 +28,7 @@ This documents helps you get started with the Jam Platform and then walks your t
 
 ### Welcome the Jam Platform
 For this workshop, there will be only one "Jam Challenge" available to you in the Jam Console.
-- Please click on the challenge **Who was that IP address I saw you with last night?**
+- Please click on the challenge titled, **Who was that IP address I saw you with last night?**
 - You will see a brief description of the lab.
 - Click on **View Details**, and you will a longer summary of the lab.  Go ahead and read this, and then...
 - Click on the blue **Start Challenge** button.  You will see a pop-up message that says, _This challenge is still deploying. Please check back soon._
@@ -78,11 +79,11 @@ An AWS Lambda function has been created to do this, but you'll need to make a sm
 2. Scroll down to view the code for the Lambda function in the inline, browser-based editor. Skim through the code to familiarize with what it does.
 3. Click the **Test** button to run the function. You will need to create a test event to do this, but the event actually does not matter in this case, so just use the "Hello World" event template and give it the name "Workshop", then click **Create**. You then need to click the **Test** button once more.
 4. Look at the output of the function, where you'll see a short version of each CloudTrail record returned by the function `print_short_record` being printed.
-5. A function `get_tuple` has been provided to take a CloudTrail record as input and return a `<principal ID, IP address>` tuple for each record. A call to this function has already been set up in the `handler` function, but the lines are commented out (hint: search for the string "TODO"). Uncomment both lines.
+5. A function `get_tuple` has been provided to take a CloudTrail record as input and return a `<principal ID, IP address>` tuple for each record. A call to this function has already been set up in the `handler` function, but the lines are commented out (hint: search for the string "TODO"). Uncomment the lines.
 6. Click the **Save** button at the top to save your function changes.
 7. Click the **Test** button to run the function again. This time it will write the tuples to the S3 bucket where they can be loaded into the IP Insights algorithm for training the model.
 
-In the S3 console, if you go into the bucket whose name starts with "aws-secml-detection-tuplesbucket", you should now see a file "train/cloudtrail_tuples.csv" inside that contains some `<principal ID, IP address>` tuples.
+In the S3 console, go into the bucket whose name contains the string "tuplesbucket" (just before the random characters on the end of the bucket name). You should now see a file "train/cloudtrail_tuples.csv" inside that contains some `<principal ID, IP address>` tuples.
 
 ### 2.2 Generate scoring data using GuardDuty findings
 
@@ -95,8 +96,7 @@ An AWS Lambda function has been created to do this, but you'll need to make a sm
 3. Click the **Save** button at the top to save your function changes.
 4. Click the **Test** button to run the function again. This time it write the tuples to the S3 bucket where they can be loaded into the IP Insights algorithm for scoring.
 
-In the S3 console, if you go into the bucket whose name starts with "aws-secml-detection-tuplesbucket", you should now see a file "infer/guardduty_tuples.csv" inside that contains some `<principal ID, IP address>` tuples.
-
+In the S3 console, go into the bucket whose name contains the string "tuplesbucket" (just before the random characters on the end of the bucket name). You should now see a file "infer/guardduty_tuples.csv" inside that contains some `<principal ID, IP address>` tuples.
 
 ## Exercise 3: IP-based anomaly detection in SageMaker
 Now, it's time to build a machine learning model with SageMaker. The IP Insights SageMaker machine learning algorithm will use the CloudTrail data we've prepared to learn what "normal" IP address usage looks like, and then we'll see how the IP addresses coming from GuardDuty appear to that model - how anomalous they look.
@@ -113,15 +113,15 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
 5. In **Permissions and Encryption**, for IAM role, choose "Enter a Customer IAM role arn" in the dropdown.
 6. Copy/paste this string into the arn parameter  
         **arn:aws:iam::[ACCTNUMBER]:role/MLSecWorkshopSageMakerRole**
-7. You'll need to paste your account number into this strong before proceeding.  The Jam platform makes this easy...
-8. Go back to the Jam console and on the left-hand side, click the **AWS Account** option
-9. Copy the 12-digit account number
-10. Paste that number into the ARN back in the SageMaker notebook console in place of **[ACCTNUMBER]**.  Your final string should look something like this  
+7. You'll need to paste your account number into this strong before proceeding.  The Jam Platform makes this easy...
+8. Go back to the Jam console and on the left-hand side menu, click the link called  **AWS Account**.
+9. Copy the 12-digit account number shown in the center of the page. This account number will match what is shown from the top-right dropdown in the AWS console.
+10. Paste the account number into the ARN back in the SageMaker notebook console in place of the string **[ACCTNUMBER]**. Your final ARN string should look like this:
    arn:aws:iam::123456789012:role/MLSecWorkshopSageMakerRole
-6. All other notebook options can be left at defaults. Click **Create notebook instance**.
-7. Once the notebook is running, click **Open Jupyter** to open the notebook.
-8. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/mlsec-workshop-ipinsights.ipynb>
-9. Once you download the notebook file, click the **Upload** button on the upper right hand side in Jupyter to upload it to your running notebook instance.
+11. All other notebook options can be left at defaults. Click **Create notebook instance**.
+12. Once the notebook is running, click **Open Jupyter** to open the notebook.
+13. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/mlsec-workshop-ipinsights.ipynb>
+14. Once you download the notebook file, click the **Upload** button on the upper right hand side in Jupyter to upload it to your running notebook instance.
 
 ### 3.2 Training and scoring with the IP Insights algorithm
 
@@ -143,7 +143,7 @@ If you would like to experiment with the IP Insights algorithm using a much larg
 
 ##  How can I reuse the artifacts in this lab?
 
-All of the code and artifacts used in this lab - including these instructions, but not including the Jam Platform - are available in a public GitHub [repository](https://github.com/aws-samples/aws-ml-detection-workshop/).  There you will find the following files:
+All of the code and artifacts used in this lab - including these instructions, but not including the Jam Platform - are available in a [public GitHub repository](https://github.com/aws-samples/aws-ml-detection-workshop/).  There you will find the following files:
 
 - aws_lambda/
     - cloudtrail_ingest.zip - Lambda zip bundle for workshop CloudTrail log ingest
@@ -152,3 +152,6 @@ All of the code and artifacts used in this lab - including these instructions, b
     - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
 - mlsec-participant-policy.json - The IAM policy specifying the permissions needed for the lab user
 - workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
+- CLEANUP.md - Instructions on cleaning up the CloudFormation stack *(not needed if using Jam Platform)*
+- cleanup.sh - Shell script to delete the workshop CloudFormation stack at the end *(not needed if using Jam Platform)*
+
