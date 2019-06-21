@@ -18,8 +18,8 @@ This documents helps you get started with the Jam Platform and then walks your t
 
 ### Prerequisites
 - You do not need an AWS account for this workshop. You will be using the AWS Jam Platform to access a temporary AWS account to run the lab.
- - After the workshop, you can deploy the CloudFormation template, located in the GitHub repository, into your own AWS account if you'd like to explore the workshop exercises further!
 - Modern, graphical web browser - sorry Lynx users :)
+- After the workshop, you can deploy the CloudFormation template, located in the GitHub repository, into your own AWS account if you'd like to explore the workshop exercises further!
 
 **Before getting started, you will need to setup an account on the AWS Jam Platform.**
 - If you do not already have a Jam account, you will need an active email address to register
@@ -107,7 +107,7 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
 
 1. Browse to the Amazon SageMaker console and click on the button called **Create notebook instance**.
 2. You will have to fill in a Notebook Instance Name in the top box: use "AWS-SecML-Detection"
-3. For Notebook instance type, we recommend selecting ml.t2.medium.
+3. For Notebook instance type, leave the default value (ml.t2.medium).
 4. Leave the Elastic Inference box set to "None"
 
 5. In **Permissions and Encryption**, for IAM role, choose "Enter a Customer IAM role arn" in the dropdown.
@@ -119,9 +119,10 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
 10. Paste the account number into the ARN back in the SageMaker notebook console in place of the string **[ACCTNUMBER]**. Your final ARN string should look like this:
    arn:aws:iam::123456789012:role/MLSecWorkshopSageMakerRole
 11. All other notebook options can be left at defaults. Click **Create notebook instance**.
-12. Once the notebook is running, click **Open Jupyter** to open the notebook.
-13. Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/mlsec-workshop-ipinsights.ipynb>
-14. Once you download the notebook file, click the **Upload** button on the upper right hand side in Jupyter to upload it to your running notebook instance.
+12. It will take about 5 minutes for the instances and notebook to be ready.  (You might have to refresh your browser tab to see the status update.) Once the notebook is running, click **Open Jupyter** to open the notebook.
+13. We have a prepared notebook for you to use.  First, Download the sample notebook file for the workshop where we will be working with the IP Insights algorithm: <https://s3.us-west-2.amazonaws.com/aws-workshop-security-ml-threat-detection/mlsec-workshop-ipinsights.ipynb> .  This will download the notebook file to your local machine.
+14. Within the Jupyter console, click the **Upload** button on the upper right hand side in Jupyter to upload the notebook.
+15. Once uploaded, click on the notebook name, and it will open in a new browser tab.
 
 ### 3.2 Training and scoring with the IP Insights algorithm
 
