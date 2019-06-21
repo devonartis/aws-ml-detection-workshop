@@ -151,7 +151,7 @@ All of the code and artifacts used in this lab - including these instructions, b
 - templates/
     - cloudformation.yaml - The CloudFormation template to deploy the stack of resources for the workshop
 - mlsec-participant-policy.json - The IAM policy specifying the permissions needed for the lab user
-- workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
+- mlsec-workshop-ipinsights.ipynb - Jupyter notebook for the workshop to load into SageMaker
 - CLEANUP.md - Instructions on cleaning up the CloudFormation stack *(not needed if using Jam Platform)*
 - cleanup.sh - Shell script to delete the workshop CloudFormation stack at the end *(not needed if using Jam Platform)*
 
