@@ -58,7 +58,7 @@ The goal of this exercise is to familiarize with the kinds of information contai
 
 The "real" GuardDuty findings that were generated for this workshop are contained in an S3 bucket as JSON. Rather than look at them in S3, we're going to run the AWS Lambda ingester function for the GuardDuty findings that will read in the findings from the S3 bucket and print them out.
 
-1. Browse to the AWS Lambda console and click on the Lambda function whose name starts with "AWS-SecML-Detection-GuardDutyIngestLambda".
+1. Browse to the AWS Lambda console and click on the Lambda function whose name contains the string "GuardDutyIngestLambda" (it will end with some random hexadecimal characters).
 2. Scroll down to view the code for the Lambda function in the inline, browser-based editor. Skim through the code to familiarize with what it does.
 3. Click the **Test** button to run the function. You will need to create a test event to do this, but the event actually does not matter in this case, so just use the "Hello World" event template, give it the name "Workshop", then click **Create**. You then need to click the **Test** button once more.
 4. Examine the output, where you'll see the JSON for each GuardDuty finding being printed by the function `print_full_finding`. Look over the findings to see what information they contain.
@@ -75,7 +75,7 @@ In order to use the IP Insights model, we need some training data. We will train
     
 An AWS Lambda function has been created to do this, but you'll need to make a small change to the function and then run it to generate the tuples.
 
-1. Browse to the AWS Lambda console and click on the Lambda function whose name starts with "AWS-SecML-Detection-CloudTrailIngestLambda".
+1. Browse to the AWS Lambda console and click on the Lambda function whose name contains the string "CloudTrailIngestLambda" (it will end with some random hexadecimal characters).
 2. Scroll down to view the code for the Lambda function in the inline, browser-based editor. Skim through the code to familiarize with what it does.
 3. Click the **Test** button to run the function. You will need to create a test event to do this, but the event actually does not matter in this case, so just use the "Hello World" event template and give it the name "Workshop", then click **Create**. You then need to click the **Test** button once more.
 4. Look at the output of the function, where you'll see a short version of each CloudTrail record returned by the function `print_short_record` being printed.
@@ -91,7 +91,7 @@ To make use of the trained model, we will pass `<principal ID, IP address>` tupl
     
 An AWS Lambda function has been created to do this, but you'll need to make a small change to the function and then run it to generate the tuples.
 
-1. Browse to the AWS Lambda console and click on the Lambda function whose name starts with "AWS-SecML-Detection-GuardDutyIngestLambda".
+1. Browse to the AWS Lambda console and click on the Lambda function whose name contains the string "GuardDutyIngestLambda" (it will end with some random hexadecimal characters).
 2. A function `get_tuples` has been provided to take GuardDuty findings as input and return `<principal ID, IP address>` tuples for each finding. A call to this function has already been set up in the `handler` function (search for the string "TODO"), but the line is commented out. Uncomment it.
 3. Click the **Save** button at the top to save your function changes.
 4. Click the **Test** button to run the function again. This time it write the tuples to the S3 bucket where they can be loaded into the IP Insights algorithm for scoring.
