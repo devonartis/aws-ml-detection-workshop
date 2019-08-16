@@ -113,7 +113,7 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
 5. In **Permissions and Encryption**, for IAM role, choose "Enter a Customer IAM role arn" in the dropdown.
 6. Copy/paste this string into the arn parameter  
         **arn:aws:iam::[ACCTNUMBER]:role/MLSecWorkshopSageMakerRole**
-7. You'll need to paste your account number into this strong before proceeding.  The Jam Platform makes this easy...
+7. You'll need to paste your account number into this string before proceeding.  The Jam Platform makes this easy...
 8. Go back to the Jam console and on the left-hand side menu, click the link called  **AWS Account**.
 9. Copy the 12-digit account number shown in the center of the page. This account number will match what is shown from the top-right dropdown in the AWS console.
 10. Paste the account number into the ARN back in the SageMaker notebook console in place of the string **[ACCTNUMBER]**. Your final ARN string should look like this:
