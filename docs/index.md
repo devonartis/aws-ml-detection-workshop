@@ -138,7 +138,7 @@ You can also view the IP Insights documentation here:
 
 <https://docs.aws.amazon.com/sagemaker/latest/dg/ip-insights.html>
 
-**2.4.1 (BONUS) IP Insights algorithm tutorial**
+#### 3.2.1 (BONUS) IP Insights algorithm tutorial
 
 If you would like to experiment with the IP Insights algorithm using a much larger dataset, you can choose the **SageMaker Examples** tab in Jupyter to see a list of all the Amazon SageMaker examples. Expand the **Introduction to Amazon Algorithms** section, look for a notebook called **ipinsights-tutorial.ipynb**, then click its **Use** button and **Create copy** in the dialog to create a copy of it, then work through it step by step.
 
