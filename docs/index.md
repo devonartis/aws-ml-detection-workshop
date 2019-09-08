@@ -19,7 +19,9 @@ This documents helps you get started with the Jam Platform and then walks your t
 ### Prerequisites
 - You do not need an AWS account for this workshop. You will be using the AWS Jam Platform to access a temporary AWS account to run the lab.
 - Modern, graphical web browser - sorry Lynx users :)
-- After the workshop, you can deploy the CloudFormation template, located in the GitHub repository, into your own AWS account if you'd like to explore the workshop exercises further!
+- After the workshop, you can deploy the CloudFormation template, located in the GitHub repository, into your own AWS account if you'd like to explore the workshop exercises further! You may use the following CloudFormation Stack Launch URLs to quickly launch the stack into the AWS account into which you are currently signed in through your web browser:
+    - US Oregon (us-west-2): https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/new?stackName=AWS-ML-Detection-Workshop&templateURL=https://aws-workshop-security-ml-threat-detection.s3-us-west-2.amazonaws.com/cloudformation.yaml
+    - Last region used: https://console.aws.amazon.com/cloudformation/home?region=#/stacks/new?stackName=AWS-ML-Detection-Workshop&templateURL=https://aws-workshop-security-ml-threat-detection.s3-us-west-2.amazonaws.com/cloudformation.yaml
 
 **Before getting started, you will need to setup an account on the AWS Jam Platform.**
 - If you do not already have a Jam account, you will need an active email address to register
