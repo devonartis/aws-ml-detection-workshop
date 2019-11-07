@@ -9,7 +9,7 @@ Welcome! This guide provides instructions and pointers to the resources used for
 
 This documents helps you get started with the Jam Platform and then walks your through the following exercises:
 
-1. Enabling Amazon GuardDuty and exploring GuarDuty findings
+1. Enabling Amazon GuardDuty and exploring GuardDuty findings
 2. Using AWS Lambda to transform data so it is suitable for model training and inference
 3. IP-based anomaly detection in SageMaker
 
@@ -69,7 +69,7 @@ The "real" GuardDuty findings that were generated for this workshop are containe
 
 ## Exercise 2: Using AWS Lambda to transform data so it is suitable for model training and inference
 
-In this exercise, you will use AWS to transform our data.  In real-world ML/Data Science projects, the data exploration and transofrmation is a critical part of the solution, and often requires a significant time investment.  For this lab, we're going to simplify things for you, and just give you a flavor of the data preparation process.  You will use two Lambda functions to prepare the input data for the ML algorithm from the source CloudTrail and GuardDuty log data. You will generate training data consisting of `<principal ID, IP address>` tuples from the CloudTrail logs and then you will call the trained model to make inferences to score the GuardDuty findings from Exercise 1 by using a similar set of tuples generated from the findings. The GuardDuty findings are based on the same set of account activity as the CloudTrail logs.
+In this exercise, you will use AWS to transform our data.  In real-world ML/Data Science projects, the data exploration and transformation is a critical part of the solution, and often requires a significant time investment.  For this lab, we're going to simplify things for you, and just give you a flavor of the data preparation process.  You will use two Lambda functions to prepare the input data for the ML algorithm from the source CloudTrail and GuardDuty log data. You will generate training data consisting of `<principal ID, IP address>` tuples from the CloudTrail logs and then you will call the trained model to make inferences to score the GuardDuty findings from Exercise 1 by using a similar set of tuples generated from the findings. The GuardDuty findings are based on the same set of account activity as the CloudTrail logs.
 
 ### 2.1 Generate training data using CloudTrail logs
 
@@ -96,7 +96,7 @@ An AWS Lambda function has been created to do this, but you'll need to make a sm
 1. Browse to the AWS Lambda console and click on the Lambda function whose name contains the string "GuardDutyIngestLambda" (it will end with some random hexadecimal characters).
 2. A function `get_tuples` has been provided to take GuardDuty findings as input and return `<principal ID, IP address>` tuples for each finding. A call to this function has already been set up in the `handler` function (search for the string "TODO"), but the line is commented out. Uncomment it.
 3. Click the **Save** button at the top to save your function changes.
-4. Click the **Test** button to run the function again. This time it write the tuples to the S3 bucket where they can be loaded into the IP Insights algorithm for scoring.
+4. Click the **Test** button to run the function again. This time it writes the tuples to the S3 bucket where they can be loaded into the IP Insights algorithm for scoring.
 
 In the S3 console, go into the bucket whose name contains the string "tuplesbucket" (just before the random characters on the end of the bucket name). You should now see a file "infer/guardduty_tuples.csv" inside that contains some `<principal ID, IP address>` tuples.
 
@@ -130,7 +130,7 @@ To use the IP Insights algorithm, you will work from a Jupyter notebook, which i
 
 Click on the notebook and work through it step by step to learn how to train the model using the tuples from the CloudTrail logs and then make inferences by scoring the tuples from the GuardDuty findings. We recommend using the "Run" command to walk through each code block one by one rather than doing "Run All".
 
-IP Insights is an unsupervised learning algorithm for detecting anomalous behavior and usage patterns of IP addresses, that helps users identifying fraudulent behavior using IP addresses, describe the Amazon SageMaker IP Insights algorithm, demonstrate how you can use it in a real-world application, and share some of our results using it internally.
+IP Insights is an unsupervised learning algorithm for detecting anomalous behavior and usage patterns of IP addresses that helps users identify fraudulent behavior using IP addresses, describe the Amazon SageMaker IP Insights algorithm, demonstrate how you can use it in a real-world application, and share some of our results using it internally.
 
 For more information about the IP Insights algorithm, please read the following AWS blog post:
 
