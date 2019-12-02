@@ -1,7 +1,7 @@
 # Getting Started with Machine Learning & Data Science for Security
 There are three folders in this directory capturing differ
 
-#EDA - Exploratory Data Analysis
+## EDA - Exploratory Data Analysis
 This folder contains a documented SQL file used for a few data exploration tasks  
 * Create the Athena table
 	* Identify the bucket where your CloudTrail logs are located. You'll need the bucket name.
@@ -20,7 +20,7 @@ This folder contains a documented SQL file used for a few data exploration tasks
 	* Note the importance of the WHERE clauses that limit the data scans to manageable run times  
  
 
-#modeling-users-api  
+## modeling-users-api  
 Identifying specific users+api pairs with repeating usage and identifying changes
 This folder contains a number of artifacts for doing data exploration in Jupyter python notebooks as as building a forecasting model
 that is is used to model the behavior of chosen pairs of User+API calls  
@@ -34,12 +34,12 @@ that is is used to model the behavior of chosen pairs of User+API calls
 		* "nginx.conf", "predictor.py", "serve", "train", "wsgi.py"
 
 
-#reInvent_ipinsights - Finding anomalous IP usage  
+## reInvent_ipinsights - Finding anomalous IP usage  
 In this Jupyter notebook, we use the Amazon SageMaker IP Insights unsupervised anomaly detection algorithm for susicipous IP addresses that uses statistical modeling and neural networks to capture associations between online resources (such as account IDs or hostnames) and IPv4 addresses. It learns vector representations for online resources and IP addresses. If the vector representing an IP address and an online resource are close together, then it is likely (not surprising) for that IP address to access that online resource, even if it has never accessed it before.
 
 We train a model using the <principal ID, IP address> tuples we generated from the CloudTrail log data, and then use the model to perform inference on the same type of tuples generated from GuardDuty findings to determine how unusual it is to see a particular IP address for a given principal involved with a finding.
 
-#batch-scoring-cloudtrail  
+## batch-scoring-cloudtrail  
 A  set of AWS Step Functions to demonstrate a simple deployment scenario.  We'll use a chain of lambda functions to read a day
 of CloudTrail logs, parse it, aggregate it, and call the model endpoints to generate anomaly scores.  
 * The README.md file in this directory provides detailed instructions for how to define these steps and run them.
