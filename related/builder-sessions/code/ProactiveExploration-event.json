@@ -1,0 +1,6 @@
+{
+  "cloudtrail_bucket": "<replace with your CloudTrail bucket name>",
+  "aws_account": "<replace with your AWS account number>",
+  "aws_region": "<replace with your AWS region>",
+  "day_of_interest": "<replace with a date in the format YYYY/MM/DD>"
+}
