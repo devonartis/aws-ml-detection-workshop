@@ -55,11 +55,11 @@ OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
 LOCATION 's3://rein2019-builder-cloudtrail-1/AWSLogs/o-dzechg70s9/'      -- *SET THIS LOCATION*
 TBLPROPERTIES ('classification'='cloudtrail');
 
-----------------------------------------------------------
---*CUSTOMIZE* this next section for your particular accounts, regions, and dates
-----------------------------------------------------------
---Create the partitions on the data we want to be able to query
---For this sample, I chose...
+-- --------------------------------------------------------
+-- *CUSTOMIZE* this next section for your particular accounts, regions, and dates
+-- --------------------------------------------------------
+-- Create the partitions on the data we want to be able to query
+-- For this sample, I chose...
 --     4 accounts: '266533154659', '387170699591', '002726030336', '004233244793', 
 --     4 regions: 'us-east-1', 'us-east-2', 'us-west-1', 'us-west-2'
 --     1 year: 2019
@@ -165,28 +165,28 @@ PARTITION (account='004233244793', region='us-west-2', year='2019', month='10') 
 PARTITION (account='004233244793', region='us-west-2', year='2019', month='11') LOCATION 's3://rein2019-builder-cloudtrail-1/AWSLogs/o-dzechg70s9/004233244793/CloudTrail/us-west-2/2019/11/';
 
 
---------------------
+-- -----------------
 -- SAMPLE QUERIES --
---------------------
+-- -----------------
 
-----------------------------------------------------------
---*CUSTOMIZE* this next section for your particular accounts, regions, dates, Users, and API (eventname) of interest
---The important part of these queries is the WHERE clauses that limit the data scans to manageable run times
+-- --------------------------------------------------------
+-- *CUSTOMIZE* this next section for your particular accounts, regions, dates, Users, and API (eventname) of interest
+-- The important part of these queries is the WHERE clauses that limit the data scans to manageable run times
 ----------------------------------------------------------
 
---Count entries for a particular (partitioned) account, region, month
+-- Count entries for a particular (partitioned) account, region, month
 select count(*)
 from aero_logs_6
 where account='266533154659'and region='us-east-1' and month='07';
 
---Get a frequency distribution of eventnames for a particular (partitioned) account, region, month
+-- Get a frequency distribution of eventnames for a particular (partitioned) account, region, month
 select eventname, count(*) as frequency
 from aero_logs_6
 where account='266533154659'and region='us-east-1'and month='07'
 group by eventname
 order by count(*) desc;
 
---Count how many times a particular eventname (prefix) occurs in any of the 5 (partitioned) accounts, 1 region, 1 month
+-- Count how many times a particular eventname (prefix) occurs in any of the 5 (partitioned) accounts, 1 region, 1 month
 select count(*) as frequency
 from aero_logs_6
 where account in ('266533154659', '387170699591', '002726030336', '004233244793')
@@ -194,7 +194,7 @@ where account in ('266533154659', '387170699591', '002726030336', '004233244793'
   and month='07'
   and eventname like 'CreateUser%';
 
---Get a list with some details of CreateUser calls in any (partitioned) account for 1 region, 1 month
+-- Get a list with some details of CreateUser calls in any (partitioned) account for 1 region, 1 month
 select account, eventtime, eventsource, eventname, userIdentity.arn
 from aero_logs_6
 where account in ('266533154659', '387170699591', '002726030336', '004233244793')
@@ -203,8 +203,8 @@ where account in ('266533154659', '387170699591', '002726030336', '004233244793'
   and eventname like 'CreateUser%'
 order by account, eventtime;
 
---Same query, but included a date range to get a particular week in July
---Note: Still included the month='07' filter because it speeds up the query 
+-- Same query, but included a date range to get a particular week in July
+-- Note: Still included the month='07' filter because it speeds up the query 
 select account, eventtime, eventsource, eventname, userIdentity.arn
 from aero_logs_6
 where account in ('266533154659', '387170699591', '002726030336', '004233244793')
@@ -214,7 +214,7 @@ where account in ('266533154659', '387170699591', '002726030336', '004233244793'
   and eventname like 'CreateUser%'
 order by account, eventtime;
 
---Finally, let's pull a data set for further exploration and modeling in pythong
+-- Finally, let's pull a data set for further exploration and modeling in pythong
 select eventtime, useridentity.arn, eventname
 from aero_logs_6
 where account in ('002726030336', '004233244793')
